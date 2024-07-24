@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "focofitnessbackend"
+version = "0.1.0"
+description = ""
+authors = ["Andrew Rodrigues <andrew.rodrigues@aluno.ifsp.edu.br>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.1"
+uvicorn = {extras = ["standart"], version = "^0.30.3"}
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.31"}
+pwdlib = {extras = ["argon2"], version = "^0.2.0"}
+python-dotenv = "^1.0.1"
+pydantic-settings = "^2.3.4"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.1"
+isort = "^5.13.2"
+blue = "^0.9.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

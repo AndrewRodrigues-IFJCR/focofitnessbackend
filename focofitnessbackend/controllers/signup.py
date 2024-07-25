@@ -3,7 +3,7 @@ from fastapi import Depends
 from ..models.account import Account
 from ..models.connection import get_async_session_maker
 from .jwt import jwt_encode_access_token, jwt_encode_refresh_token
-from .schemas import AccountRequest
+from .schemas import AccountRequest, Token
 from .security import generate_password_hash
 
 
@@ -20,4 +20,7 @@ async def signup(
         await session.commit()
         await session.refresh(account)
 
-    return account
+    return Token(
+        access_token=jwt_encode_access_token(payload := {'sub': account.id}),
+        refresh_token=jwt_encode_refresh_token(payload),
+    )
